@@ -7,8 +7,8 @@ import os
 
 jira = Jira(
     url='https://kvprodman.atlassian.net',
-    username='jenkins@knowledgevision.com',
-    password='U8dA3NrmQQIAtqHrCa7PA2E5')
+    username='',
+    password='')
 
 JIRA_PROJECTS = ('PH', 'QU', 'THUN', 'OEC')
 JIRA_RELEASE_NAME = 'release_{date}'.format(date=datetime.now().strftime('%Y%m%d'))
