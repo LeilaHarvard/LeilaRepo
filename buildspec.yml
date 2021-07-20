@@ -1,0 +1,19 @@
+version: 0.2
+phases:
+  install:
+    commands:
+      - yum update -y
+      - yum install python3 -y
+      - yum install python3-pip -y
+      - pip install --upgrade pip
+      - pip install boto3
+      - pip3 install atlassian-python-api
+
+  build:
+    commands:
+      - ls
+      - chmod +x ./release_git.sh 
+      - ./release_git.sh release_20210625
+      - python3 jira_release.py
+   
+  
