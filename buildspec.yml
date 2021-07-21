@@ -1,4 +1,9 @@
 version: 0.2
+env:
+  secrets-manager:
+    GITHUB_TOKEN:   github/access/token
+    GIT_USER_NAME:  cicd/secrets:github_username
+    GIT_USER_EMAIL: cicd/secrets:git_user_email
 phases:
   install:
     commands:
@@ -8,6 +13,13 @@ phases:
       - pip install --upgrade pip
       - pip install boto3
       - pip3 install atlassian-python-api
+   pre_build:
+    commands:
+      - git config --global github.token ${GITHUB_TOKEN}
+      - git config --global user.name ${GIT_USER_NAME}
+      - git config --global user.email ${GIT_USER_EMAIL}
+      - git clone https://${GITHUB_TOKEN}@https://github.com/LeilaHarvard/LeilaRepo
+      - cd $REPO_NAME
 
   build:
     commands:
